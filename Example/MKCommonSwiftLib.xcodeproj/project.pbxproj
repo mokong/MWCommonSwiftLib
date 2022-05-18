@@ -20,7 +20,7 @@
 		71783C7C07BF4F7993CC4F8A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D24E63403CD730E7C0A70BAA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DE7996FEDD2360969C303CAF /* Pods-MKCommonSwiftLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MKCommonSwiftLib_Tests.debug.xcconfig"; path = "Target Support Files/Pods-MKCommonSwiftLib_Tests/Pods-MKCommonSwiftLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		ED068736870906A1CE70F994 /* MKCommonSwiftLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MKCommonSwiftLib.podspec; path = ../MKCommonSwiftLib.podspec; sourceTree = "<group>"; };
+		ED068736870906A1CE70F994 /* MKCommonSwiftLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MKCommonSwiftLib.podspec; path = ../MKCommonSwiftLib.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -15,10 +15,10 @@
     "git": "https://github.com/mokong/MWCommonSwiftLib.git",
     "tag": "0.1.0"
   },
+  "source_files": "MKCommonSwiftLib/Classes/*/*.{swift}",
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "MKCommonSwiftLib/Classes/**/*",
   "frameworks": [
     "UIKit",
     "Foundation",
@@ -32,29 +32,5 @@
     "LanguageManager-iOS": [
 
     ]
-  },
-  "subspecs": [
-    {
-      "name": "Base",
-      "source_files": "HXUIKit/Classes/Base/*.{h,m}"
-    },
-    {
-      "name": "Const",
-      "source_files": "HXUIKit/Classes/Const/*.{h,m}"
-    },
-    {
-      "name": "Extension",
-      "source_files": "HXUIKit/Classes/Extension/*",
-      "subspecs": [
-        {
-          "name": "Foundation",
-          "source_files": "HXUIKit/Classes/Extension/Foundation/*.{h,m}"
-        },
-        {
-          "name": "UIKit",
-          "source_files": "HXUIKit/Classes/Extension/UIKit/*.{h,m}"
-        }
-      ]
-    }
-  ]
+  }
 }

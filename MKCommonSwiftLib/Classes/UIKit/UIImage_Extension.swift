@@ -170,7 +170,7 @@ extension UIImage {
         
         waterMarkImageW = imageSize.width
         waterMarkImageH = waterMarkImageW / waterMarkImageRatio
-        marginY = marginY / (MWScreenHeight / imageSize.height)
+        marginY = marginY / (UIScreen.main.bounds.size.height / imageSize.height)
         
         var maskFrame = CGRect(x: 0.0, y: 0.0, width: waterMarkImageW, height: waterMarkImageH)
         maskFrame.origin = CGPoint(x: imageSize.width - waterMarkImageW - marginX, y: imageSize.height - waterMarkImageH - marginY)

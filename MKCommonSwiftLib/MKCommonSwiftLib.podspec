@@ -28,8 +28,30 @@ This is a lib of swift, for quickly create swift develop
   s.source           = { :git => 'https://github.com/mokong/MWCommonSwiftLib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
-  s.source_files = 'MKCommonSwiftLib/Classes/*/*.{swift}'
-  s.ios.deployment_target = '10.0' 
+  s.source_files = 'MKCommonSwiftLib/Classes/*.{swift}'
+  s.ios.deployment_target = '10.0'  
+
+  #View
+  s.subspec 'Base' do |a|
+    a.source_files = 'MKCommonSwiftLib/Classes/Base/*.{swift}'
+  end
+
+    #Const
+  s.subspec 'Const' do |v|
+    v.source_files = 'MKCommonSwiftLib/Classes/Const/*.{swift}'
+  end
+
+    #Extension
+  s.subspec 'Extension' do |b|
+      b.source_files = 'MKCommonSwiftLib/Classes/Extension/*'
+      b.subspec 'Foundation' do |f|
+          f.source_files = 'MKCommonSwiftLib/Classes/Extension/Foundation/*.{swift}'
+      end
+      
+      b.subspec 'UIKit' do |c|
+          c.source_files = 'MKCommonSwiftLib/Classes/Extension/UIKit/*.{swift}'
+      end
+  end
 
   # s.resource_bundles = {
   #   'MKCommonSwiftLib' => ['MKCommonSwiftLib/Assets/*.png']

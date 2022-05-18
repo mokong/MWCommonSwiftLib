@@ -1,0 +1,6 @@
+use_frameworks!
+target 'MKCommonSwiftLib_Tests' do
+  pod 'MKCommonSwiftLib', :path => '../'
+  
+  
+end

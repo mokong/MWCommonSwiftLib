@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MKCommonSwiftLib'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MKCommonSwiftLib.'
+  s.summary          = 'MKCommonSwiftLib is a lib of swift'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,50 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+This is a lib of swift, for quickly create swift develop
                        DESC
 
-  s.homepage         = 'https://github.com/7610712/MKCommonSwiftLib'
+  s.homepage         = 'https://github.com/mokong/MWCommonSwiftLib'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '7610712' => 'a525325614@163.com' }
-  s.source           = { :git => 'https://github.com/7610712/MKCommonSwiftLib.git', :tag => s.version.to_s }
+  s.author           = { 'MorganWang' => 'a525325614@163.com' }
+  s.source           = { :git => 'https://github.com/mokong/MWCommonSwiftLib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'MKCommonSwiftLib/Classes/**/*'
   
+
+#View
+s.subspec 'Base' do |v|
+  v.source_files = 'HXUIKit/Classes/Base/*.{h,m}'
+end
+
+  #Const
+s.subspec 'Const' do |v|
+  v.source_files = 'HXUIKit/Classes/Const/*.{h,m}'
+end
+
+  #Extension
+s.subspec 'Extension' do |b|
+    b.source_files = 'HXUIKit/Classes/Extension/*'
+    b.subspec 'Foundation' do |v|
+        v.source_files = 'HXUIKit/Classes/Extension/Foundation/*.{h,m}'
+    end
+    
+    b.subspec 'UIKit' do |c|
+        c.source_files = 'HXUIKit/Classes/Extension/UIKit/*.{h,m}'
+    end
+end
+
   # s.resource_bundles = {
   #   'MKCommonSwiftLib' => ['MKCommonSwiftLib/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'Foundation', 'AVFoundation', 'Photos'
+  s.dependency 'SnapKit', '~> 5.0.0'
+  s.dependency 'LanguageManager-iOS'
+
 end

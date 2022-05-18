@@ -1,0 +1,60 @@
+{
+  "name": "MKCommonSwiftLib",
+  "version": "0.1.0",
+  "summary": "MKCommonSwiftLib is a lib of swift",
+  "description": "This is a lib of swift, for quickly create swift develop",
+  "homepage": "https://github.com/mokong/MWCommonSwiftLib",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "MorganWang": "a525325614@163.com"
+  },
+  "source": {
+    "git": "https://github.com/mokong/MWCommonSwiftLib.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "MKCommonSwiftLib/Classes/**/*",
+  "frameworks": [
+    "UIKit",
+    "Foundation",
+    "AVFoundation",
+    "Photos"
+  ],
+  "dependencies": {
+    "SnapKit": [
+      "~> 5.0.0"
+    ],
+    "LanguageManager-iOS": [
+
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Base",
+      "source_files": "HXUIKit/Classes/Base/*.{h,m}"
+    },
+    {
+      "name": "Const",
+      "source_files": "HXUIKit/Classes/Const/*.{h,m}"
+    },
+    {
+      "name": "Extension",
+      "source_files": "HXUIKit/Classes/Extension/*",
+      "subspecs": [
+        {
+          "name": "Foundation",
+          "source_files": "HXUIKit/Classes/Extension/Foundation/*.{h,m}"
+        },
+        {
+          "name": "UIKit",
+          "source_files": "HXUIKit/Classes/Extension/UIKit/*.{h,m}"
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIView {
+public extension UIView {
     /// Remove all subviews
     func removeAllSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })

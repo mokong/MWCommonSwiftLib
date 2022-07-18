@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension String {
+public extension String {
     // 根据宽度和字体，计算高度
     func getStrHeight(width: CGFloat, font: UIFont) -> CGFloat {
         let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)),
@@ -29,4 +29,33 @@ extension String {
         return resultW
     }
     
+    static func appVersionStr() -> String {
+        if let infoDic = Bundle.main.infoDictionary,
+           let versionStr = infoDic["CFBundleShortVersionString"] as? String {
+            return versionStr
+        }
+        return ""
+    }
+    
+    /// 判断字符串是否为空
+    static func isEmpty(str: String!) -> Bool {
+        if (str == nil) || (str.count == 0) || (str == " ") {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func queryParams() -> [String: String] {
+        var params: [String: String] = [:]
+        let urlComp = URLComponents(string: self)
+        urlComp?.queryItems?.enumerated().forEach({ item in
+            if let value = item.element.value {
+                params[item.element.name] = value
+            }
+        })
+        return params
+    }
+
 }

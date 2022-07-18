@@ -12,10 +12,12 @@ public extension UIFont {
     static let custom = MWCustomFont.self
     
     enum MWCustomFont {
-        public static let titleFont: UIFont = UIFont.pingFangMedium(21.0)
+        public static let inputNumberFont: UIFont = UIFont.pingFangMedium(40.0)
+        public static let bigTitleFont: UIFont = UIFont.pingFangMedium(36.0)
+        public static let titleFont: UIFont = UIFont.pingFangMedium(24.0)
         public static let headerFont: UIFont = UIFont.pingFangMedium(18.0)
-        public static let normalFont: UIFont = UIFont.pingFangRegular(16.0)
-        public static let descFont: UIFont = UIFont.pingFangRegular(14.0)
+        public static let normalFont: UIFont = UIFont.pingFangRegular(15.0)
+        public static let descFont: UIFont = UIFont.pingFangRegular(13.0)
         public static let footerFont: UIFont = UIFont.pingFangRegular(12.0)
         public static let courierFont: UIFont = UIFont.courierFont(15.0)
     }

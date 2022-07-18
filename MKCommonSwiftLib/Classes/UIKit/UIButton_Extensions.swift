@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIButton {
+public extension UIButton {
     func setInsets(
         forContentPadding contentPadding: UIEdgeInsets,
         imageTitlePadding: CGFloat

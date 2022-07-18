@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 
-extension UIDevice {
+public extension UIDevice {
     /// 不准确的导航栏高度
     static func navigationBarH() -> CGFloat {
         if isFullScreen() {
@@ -59,6 +59,11 @@ extension UIDevice {
         }
     }
     
+    /// 底部 Tabbar 高度
+    static func bottomTabbarHeight() -> CGFloat {
+        return bottomSafeAreaHeight() + 49.0
+    }
+    
     class func grantedPhotoAuthorization(completion: ((Bool) -> Void)?) {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
@@ -90,7 +95,7 @@ extension UIDevice {
         let alert = UIAlertController(title: "提示", message: msg, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "确定", style: UIAlertAction.Style.default, handler: { action in
-            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
         }))
         DispatchQueue.main.async {
             vc.present(alert, animated: true, completion: nil)

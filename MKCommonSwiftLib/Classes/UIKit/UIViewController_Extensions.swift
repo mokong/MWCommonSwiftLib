@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    var topBarHeight: CGFloat {
+    public var topBarHeight: CGFloat {
         var top = self.navigationController?.navigationBar.frame.height ?? 0.0
         top += UIDevice.statusBarH()
         return top
     }
     
     
-    static func navBarColor() -> UIColor {
-        return UIColor.MWCustomColor.navigationBar1
+    public static func navBarColor() -> UIColor {
+        return UIColor.MWCustomColor.themeColor
     }
 
 }

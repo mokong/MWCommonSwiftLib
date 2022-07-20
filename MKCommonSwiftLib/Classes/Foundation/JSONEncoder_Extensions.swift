@@ -8,11 +8,13 @@
 import Foundation
 
 // Base解析失败原因
+public
 enum BaseParseError: Error {
     case emptyResponse
     case failedDecoder
 }
 
+public
 extension JSONDecoder {
     static func transToModel<T: Codable>(_ jsonObj: Any, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertToCamelCase) -> (T?, BaseParseError?) {
         do {

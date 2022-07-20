@@ -29,24 +29,6 @@ public extension String {
         return resultW
     }
     
-    static func appVersionStr() -> String {
-        if let infoDic = Bundle.main.infoDictionary,
-           let versionStr = infoDic["CFBundleShortVersionString"] as? String {
-            return versionStr
-        }
-        return ""
-    }
-    
-    /// 判断字符串是否为空
-    static func isEmpty(str: String!) -> Bool {
-        if (str == nil) || (str.count == 0) || (str == " ") {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
     func queryParams() -> [String: String] {
         var params: [String: String] = [:]
         let urlComp = URLComponents(string: self)

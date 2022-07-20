@@ -11,6 +11,22 @@ import AVFoundation
 import Photos
 
 public extension UIDevice {
+    static func appVersionStr() -> String {
+        if let infoDic = Bundle.main.infoDictionary,
+           let versionStr = infoDic["CFBundleShortVersionString"] as? String {
+            return versionStr
+        }
+        return ""
+    }
+
+    static func appBuildVersionStr() -> String {
+        if let infoDic = Bundle.main.infoDictionary,
+           let versionStr = infoDic["CFBundleVersion"] as? String {
+            return versionStr
+        }
+        return ""
+    }
+
     /// 不准确的导航栏高度
     static func navigationBarH() -> CGFloat {
         if isFullScreen() {

@@ -1,0 +1,30 @@
+//
+//  NSDictionaryExtensions.swift
+//  HXLogisticsMerchantSwift
+//
+//  Created by Lazyloading on 2021/4/26.
+//
+
+import Foundation
+
+public
+extension Dictionary {
+    static func constructFromJSON (json: String) -> Dictionary? {
+        if let dic = (try? JSONSerialization.jsonObject(
+            with: json.data(using: String.Encoding.utf8,
+                            allowLossyConversion: true)!,
+            options: JSONSerialization.ReadingOptions.mutableContainers)) as? Dictionary {
+            return dic
+        } else {
+            return nil
+        }
+    }
+    
+    func toString() -> String? {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions()) {
+            let jsonStr = String(data: jsonData, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
+            return String(jsonStr ?? "")
+        }
+        return nil
+    }
+}

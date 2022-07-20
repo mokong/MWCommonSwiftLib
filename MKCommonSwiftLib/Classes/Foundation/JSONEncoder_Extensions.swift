@@ -27,7 +27,7 @@ extension JSONDecoder {
     }
     
     static func transToModel<T: Codable>(_ json: String?, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertToCamelCase) -> (T?, BaseParseError?) {
-        if String.isEmpty(str: json) {
+        if json.isNilOrEmpty {
             return (nil, BaseParseError.emptyResponse)
         }
         else {
@@ -55,6 +55,7 @@ extension JSONDecoder {
     }
 }
 
+public
 extension Encodable {
     func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
@@ -81,7 +82,6 @@ extension Encodable {
     }
 }
 
-
 struct SimpleCodingKey : CodingKey {
     var stringValue: String
     var intValue: Int?
@@ -96,6 +96,7 @@ struct SimpleCodingKey : CodingKey {
     }
 }
 
+public
 extension JSONDecoder.KeyDecodingStrategy {
     static var convertToPascalCase: JSONDecoder.KeyDecodingStrategy {
         return .custom { codingKeys in

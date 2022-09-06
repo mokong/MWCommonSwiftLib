@@ -129,7 +129,7 @@ public extension Date {
     }
 }
 
-extension Date {
+public extension Date {
     func time(since fromDate: Date) -> String {
         let earliest = self < fromDate ? self : fromDate
         let latest = (earliest == self) ? fromDate : self
@@ -155,7 +155,7 @@ extension Date {
     }
 }
 
-extension Int {
+public extension Int {
     func of(_ name: String) -> String {
         guard self != 1 else { return "\(self) \(name)" }
         return "\(self) \(name)s"

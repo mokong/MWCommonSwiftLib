@@ -2,7 +2,7 @@
 //  UIView_Extensions.swift
 //  CommonSwiftExtension
 //
-//  Created by Horizon on 17/05/2022.
+//  Created by MorganWang on 17/05/2022.
 //
 
 import Foundation

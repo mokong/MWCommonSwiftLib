@@ -2,7 +2,7 @@
 //  UILabel_Extension.swift
 //  MWWaterMarkCamera
 //
-//  Created by Horizon on 19/1/2022.
+//  Created by MorganWang on 19/1/2022.
 //
 
 import Foundation

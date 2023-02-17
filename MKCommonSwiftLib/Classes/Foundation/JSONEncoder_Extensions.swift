@@ -2,7 +2,7 @@
 //  JSONEncoder_Extensions.swift
 //  AccountForOthers
 //
-//  Created by Horizon on 28/05/2022.
+//  Created by MorganWang on 28/05/2022.
 //
 
 import Foundation

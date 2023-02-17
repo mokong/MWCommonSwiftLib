@@ -2,7 +2,7 @@
 //  URL_Extensions.swift
 //  MKCommonSwiftLib
 //
-//  Created by Horizon on 06/09/2022.
+//  Created by MorganWang on 06/09/2022.
 //
 
 import Foundation

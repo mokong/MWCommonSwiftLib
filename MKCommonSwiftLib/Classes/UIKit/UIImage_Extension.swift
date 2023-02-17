@@ -2,7 +2,7 @@
 //  UIImage_Extension.swift
 //  MWWaterMarkCamera
 //
-//  Created by Horizon on 17/1/2022.
+//  Created by MorganWang on 17/1/2022.
 //
 
 import Foundation

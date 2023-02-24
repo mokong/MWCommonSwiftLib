@@ -68,7 +68,26 @@ public extension UIDevice {
     /// 底部 safeArea 高度
     static func bottomSafeAreaHeight() -> CGFloat {
         if UIDevice.isFullScreen() {
-            return 34.0
+            if #available(iOS 11.0, *) {
+                return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0
+            } else {
+                // Fallback on earlier versions
+                return 0.0
+            }
+        }
+        else {
+            return 0.0
+        }
+    }
+    
+    static func topSafeAreaHeight() -> CGFloat {
+        if UIDevice.isFullScreen() {
+            if #available(iOS 11.0, *) {
+                return UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0.0
+            } else {
+                // Fallback on earlier versions
+                return 0.0
+            }
         }
         else {
             return 0.0

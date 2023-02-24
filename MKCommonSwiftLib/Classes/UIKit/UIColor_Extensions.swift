@@ -25,11 +25,13 @@ public extension UIColor {
         public static let primary: UIColor = dynamicColor(light: UIColor(hex: 0x367EF5), dark: UIColor(hex: 0x367EF5))
         public static let background: UIColor = dynamicColor(light: .white, dark: .white)
         public static let lightBackground: UIColor = dynamicColor(light: UIColor(hex: 0xF4F4F4), dark: UIColor(hex: 0xF4F4F4))
+        public static let cellBackground: UIColor = dynamicColor(light: UIColor(hex: 0xFAFAFA), dark: UIColor(hex: 0xFAFAFA))
         public static let buttonBackground: UIColor = dynamicColor(light: UIColor(hex: 0xF0F2F4), dark: UIColor(hex: 0xF0F2F4))
         public static let dimBack: UIColor = dynamicColor(light: UIColor(hex: 0x1C1C1C), dark: UIColor(hex: 0x1C1C1C))
         public static let lightDimBack: UIColor = dynamicColor(light: UIColor(hex: 0x272727), dark: UIColor(hex: 0x272727))
 
         public static let line: UIColor = dynamicColor(light: UIColor(hex: 0xD4D4D4), dark: UIColor(hex: 0xD4D4D4))
+        public static let cellSeperator: UIColor = dynamicColor(light: UIColor(hex: 0xF2F2F2), dark: UIColor(hex: 0xF2F2F2))
         public static let borderLine: UIColor = dynamicColor(light: UIColor(hex: 0xE1E1E1), dark: UIColor(hex: 0xE1E1E1))
 
         public static let hightlightText: UIColor = dynamicColor(light: UIColor(hex: 0x7C4CFE), dark: UIColor(hex: 0x7C4CFE))
@@ -47,6 +49,7 @@ public extension UIColor {
         public static let unabledButton: UIColor = dynamicColor(light: UIColor(hex: 0xD7CCF6), dark: UIColor(hex: 0xD7CCF6))
         
         public static let themeColor: UIColor = dynamicColor(light: UIColor(hex: 0x7C4CFE), dark: UIColor(hex: 0x7C4CFE))
+        public static let lightThemeBackColor: UIColor = dynamicColor(light: UIColor(hex: 0x7C4CFE, alpha: 0.2), dark: UIColor(hex: 0x7C4CFE, alpha: 0.2))
 
     }
 }
@@ -101,5 +104,9 @@ public extension UIColor {
         let floatValue: CGFloat = CGFloat(hexFloat / 255.0)
         print(floatValue)
         return floatValue
+    }
+    
+    class var random: UIColor {
+        return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 
+public
 extension UIImage {
     
     static func getSavedImage(named: String) -> UIImage? {

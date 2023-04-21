@@ -49,6 +49,7 @@ extension Optional where Wrapped: Collection {
     }
 }
 
+public
 extension Optional where Wrapped == String {
     var wrapNil: String {
         if let self = self {
@@ -59,6 +60,7 @@ extension Optional where Wrapped == String {
     }
 }
 
+public
 extension Optional where Wrapped == UIView {
     mutating func get<T: UIView>(
         orSet expression: @autoclosure () -> T

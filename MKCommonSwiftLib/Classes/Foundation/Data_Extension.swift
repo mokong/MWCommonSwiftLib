@@ -8,6 +8,7 @@
 import Foundation
 import CommonCrypto
 
+public
 extension Data {
     public init(hex: String) {
         self.init(Array<UInt8>(hex: hex))

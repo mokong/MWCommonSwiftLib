@@ -7,6 +7,7 @@
 
 import Foundation
 
+public
 extension Encodable {
     var dict : [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else { return nil }

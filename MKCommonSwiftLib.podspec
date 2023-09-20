@@ -28,7 +28,7 @@ This is a lib of swift, for quickly create swift develop
   s.source           = { :git => 'https://github.com/mokong/MWCommonSwiftLib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
-  s.source_files = 'MKCommonSwiftLib/Classes/*.{swift}'
+#  s.source_files = 'MKCommonSwiftLib/Classes/*.{h}'
   s.ios.deployment_target = '10.0'
   
   s.subspec 'Foundation' do |b|

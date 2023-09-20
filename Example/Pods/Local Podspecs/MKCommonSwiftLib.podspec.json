@@ -1,6 +1,6 @@
 {
   "name": "MKCommonSwiftLib",
-  "version": "0.1.3",
+  "version": "0.1.9",
   "summary": "MKCommonSwiftLib is a lib of swift",
   "swift_versions": "5.0",
   "description": "This is a lib of swift, for quickly create swift develop",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/mokong/MWCommonSwiftLib.git",
-    "tag": "0.1.3"
+    "tag": "0.1.9"
   },
   "source_files": "MKCommonSwiftLib/Classes/*/*.{swift}",
   "platforms": {

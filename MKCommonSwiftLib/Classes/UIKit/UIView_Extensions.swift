@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 public extension UIView {
-    
     static func loadFromXib<T>(withOwner: Any? = nil, options: [UINib.OptionsKey: Any]? = nil) -> T where T: UIView {
         let bundle = Bundle(for: self)
         let nib = UINib(nibName: "\(self)", bundle: bundle)

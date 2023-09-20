@@ -10,13 +10,13 @@ import CommonCrypto
 
 public
 extension Data {
-    public init(hex: String) {
+    init(hex: String) {
         self.init(Array<UInt8>(hex: hex))
     }
-    public var bytes: Array<UInt8> {
+    var bytes: Array<UInt8> {
         return Array(self)
     }
-    public func toHexString() -> String {
+    func toHexString() -> String {
         return bytes.toHexString()
     }
     

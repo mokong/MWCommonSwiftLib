@@ -1,6 +1,6 @@
 //
 //  UILabel_Extension.swift
-//  MWWaterMarkCamera
+// MorganWang
 //
 //  Created by MorganWang on 19/1/2022.
 //

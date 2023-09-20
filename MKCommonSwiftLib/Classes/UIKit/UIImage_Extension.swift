@@ -1,6 +1,6 @@
 //
 //  UIImage_Extension.swift
-//  MWWaterMarkCamera
+// MorganWang
 //
 //  Created by MorganWang on 17/1/2022.
 //
@@ -10,8 +10,78 @@ import UIKit
 import AVFoundation
 import Photos
 
-public
 extension UIImage {
+    
+    func thumbnailImage(from targetSize: CGFloat) -> UIImage? {
+        let options = [
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceThumbnailMaxPixelSize: targetSize
+        ] as CFDictionary // Specify your desired size at kCGImageSourceThumbnailMaxPixelSize.
+        
+        guard let imageData = pngData(),
+              let source = CGImageSourceCreateWithData(imageData as NSData, nil),
+              let imageReference = CGImageSourceCreateThumbnailAtIndex(source, 0, options) else {
+            return self
+        }
+        return UIImage(cgImage: imageReference)
+    }
+    
+    func resizeImage(to targetSize: CGSize) -> UIImage? {
+        var actualH: CGFloat = CGFloat(self.size.height)
+        var actualW: CGFloat = CGFloat(self.size.width)
+        var imgRatio: CGFloat = actualW / actualH
+        let maxRatio: CGFloat = targetSize.width / targetSize.height
+        if actualH > targetSize.height || actualW > targetSize.width {
+            if imgRatio < maxRatio {
+                // adjust width according to maxH
+                imgRatio = targetSize.height / actualH
+                actualW = imgRatio * actualW
+                actualH = targetSize.height
+            }
+            else if imgRatio > maxRatio {
+                // adjust height according to maxW
+                imgRatio = targetSize.width / actualW
+                actualH = imgRatio * actualH
+                actualW = targetSize.width
+            }
+            else {
+                actualW = targetSize.width
+                actualH = targetSize.height
+            }
+        }
+        
+        UIGraphicsBeginImageContext(CGSize(width: actualW, height: actualH))
+        draw(in: CGRect(x: 0.0, y: 0.0, width: actualW, height: actualH))
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let resultImg = img?.compressToTargetMbSize(1)
+        UIGraphicsEndImageContext()
+        return resultImg
+    }
+    
+    func compressToTargetMbSize(_ expectedSizeInMb: Int) -> UIImage? {
+        let sizeInBytes = expectedSizeInMb * 1024 * 1024
+        var needCompress: Bool = true
+        var imgData: Data?
+        var compressValue: CGFloat = 1.0
+        while (needCompress && compressValue > 0.0) {
+            if let data = self.jpegData(compressionQuality: compressValue) {
+                if data.count < sizeInBytes {
+                    needCompress = false
+                    imgData = data
+                } else {
+                    compressValue -= 0.1
+                }
+            }
+        }
+        
+        if let data = imgData {
+            if data.count < sizeInBytes {
+                return UIImage(data: data)
+            }
+        }
+        return nil
+    }
     
     static func getSavedImage(named: String) -> UIImage? {
         if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
@@ -57,7 +127,22 @@ extension UIImage {
         return newImage
     }
     
-    class func saveToPhotoLibrary(with image: UIImage, completion: ((Bool) -> Void)?) {
+    class func videoSaveToSystemPhotoLibrary(url: URL, completion: ((Bool) -> Void)?) {
+        UIDevice.grantedPhotoAuthorization { granted in
+            if granted {
+                PHPhotoLibrary.shared().performChanges {
+                    let _ = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                } completionHandler: { success, error in
+                    completion?(success)
+                }
+            }
+            else {
+                UIDevice.noAuthHandle(with: "尚未获取访问权限，是否前去获取？", on: UIApplication.shared.keyWindow!.rootViewController!)
+            }
+        }
+    }
+    
+    class func saveToSystemPhotoLibrary(with image: UIImage, completion: ((Bool) -> Void)?) {
         UIDevice.grantedPhotoAuthorization { granted in
             if granted {
                 PHPhotoLibrary.shared().performChanges {
@@ -139,8 +224,10 @@ extension UIImage {
         switch orientation {
         case .portrait, .faceUp:
             return UIImage.Orientation.right
+//            return UIImage.Orientation.up
         case .portraitUpsideDown, .faceDown:
             return UIImage.Orientation.left
+//            return UIImage.Orientation.up
         case .landscapeLeft:
             if devicePosition == .back {
                 return UIImage.Orientation.up
@@ -160,30 +247,10 @@ extension UIImage {
         }
     }
     
-    func draw(waterMarkImage: UIImage, margin: CGPoint, alpha: CGFloat = 1.0) -> UIImage? {
-        let imageSize = self.size
-                
-        var waterMarkImageW = waterMarkImage.size.width
-        var waterMarkImageH = waterMarkImage.size.height
-        let waterMarkImageRatio = waterMarkImageW / waterMarkImageH
-        var marginY = margin.y
-        let marginX = margin.x
-        
-        waterMarkImageW = imageSize.width
-        waterMarkImageH = waterMarkImageW / waterMarkImageRatio
-        marginY = marginY / (UIScreen.main.bounds.size.height / imageSize.height)
-        
-        var maskFrame = CGRect(x: 0.0, y: 0.0, width: waterMarkImageW, height: waterMarkImageH)
-        maskFrame.origin = CGPoint(x: imageSize.width - waterMarkImageW - marginX, y: imageSize.height - waterMarkImageH - marginY)
-        
-        // 开始绘制给图片添加图片
-        return draw(waterMarkImage: waterMarkImage, maskFrame: maskFrame, alpha: 1.0)
-    }
-    
     func draw(waterMarkImage: UIImage, maskFrame: CGRect, alpha: CGFloat = 1.0) -> UIImage? {
         let imageSize = self.size
         // 开始绘制给图片添加图片
-        UIGraphicsBeginImageContext(imageSize)
+        UIGraphicsBeginImageContextWithOptions(imageSize, true, UIScreen.main.scale)
         draw(in: CGRect(x: 0.0, y: 0.0, width: imageSize.width, height: imageSize.height))
         waterMarkImage.draw(in: maskFrame, blendMode: .normal, alpha: alpha)
         let resultImage = UIGraphicsGetImageFromCurrentImageContext()

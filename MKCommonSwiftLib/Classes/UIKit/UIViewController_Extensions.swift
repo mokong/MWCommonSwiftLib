@@ -14,10 +14,6 @@ public extension UIViewController {
         top += UIDevice.statusBarH()
         return top
     }
-    
-    static func navBarColor() -> UIColor {
-        return UIColor.MWCustomColor.navigationBar1
-    }
 }
 
 public

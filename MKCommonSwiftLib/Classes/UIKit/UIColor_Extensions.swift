@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 public extension UIColor {
-    static let custom = MWCustomColor.self
-    
-    static private func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
+    static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
         if #available(iOS 13.0, *) {
             return UIColor {
                 $0.userInterfaceStyle == .dark ? dark : light
@@ -21,32 +19,7 @@ public extension UIColor {
         }
     }
     
-    enum MWCustomColor {
-        public static let primary: UIColor = dynamicColor(light: UIColor(hex: 0x367EF5), dark: UIColor(hex: 0x367EF5))
-        public static let background: UIColor = dynamicColor(light: .white, dark: UIColor(hex: 0x292A30))
-        public static let lightBackground: UIColor = dynamicColor(light: UIColor(hex: 0xF8FBFF), dark: UIColor(hex: 0x080B00))
-        public static let buttonBackground: UIColor = dynamicColor(light: UIColor(hex: 0xF0F2F4), dark: UIColor(hex: 0x0F0D0B))
-        public static let dimBack: UIColor = dynamicColor(light: UIColor(hex: 0x1C1C1C), dark: UIColor(hex: 0xE3E3E3))
-        public static let lightDimBack: UIColor = dynamicColor(light: UIColor(hex: 0x272727), dark: UIColor(hex: 0xD9D9D9))
-
-        public static let line: UIColor = dynamicColor(light: UIColor(hex: 0xF2F2F2), dark: UIColor(hex: 0x0D0D0D))
-        public static let borderLine: UIColor = dynamicColor(light: UIColor(hex: 0xE1E1E1), dark: UIColor(hex: 0x1E1E1E))
-
-        public static let hightlightText: UIColor = dynamicColor(light: UIColor(hex: 0x2E7CF6), dark: UIColor(hex: 0xD1930A))
-        public static let primaryText: UIColor = dynamicColor(light: UIColor(hex: 0x333333), dark: UIColor(hex: 0xCCCCCC))
-        public static let secondaryText: UIColor = dynamicColor(light: UIColor(hex: 0x818181), dark: UIColor(hex: 0x8E8E8E))
-        public static let whiteText: UIColor = dynamicColor(light: .white, dark: .white)
-
-        public static let primaryButton: UIColor = dynamicColor(light: UIColor(hex: 0x367EF5), dark: UIColor(hex: 0x367EF5))
-        public static let secondaryButton: UIColor = dynamicColor(light: UIColor(hex: 0x878787), dark: UIColor(hex: 0x898989))
-        public static let normalButton: UIColor = dynamicColor(light: UIColor(hex: 0x272727), dark: UIColor(hex: 0xD9D9D9))
-        public static let selectedButton: UIColor = dynamicColor(light: UIColor(hex: 0x2E7CF6), dark: UIColor(hex: 0xD1930A))
-
-        public static let focusLineColor: UIColor = dynamicColor(light: UIColor(hex: 0xBDAB26), dark: UIColor(hex: 0x5265DA))
-        
-        public static let navigationBar1: UIColor = dynamicColor(light: UIColor(hex: 0x53808c), dark: UIColor(hex: 0x53808c))
-
-    }
+    static let line: UIColor = dynamicColor(light: UIColor(hex: 0xF2F2F2), dark: UIColor(hex: 0x0D0D0D))
 }
 
 public extension UIColor {

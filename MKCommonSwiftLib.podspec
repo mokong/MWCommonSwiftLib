@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MKCommonSwiftLib'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'MKCommonSwiftLib is a lib of swift'
   s.swift_version = '5.0'
 # This description is used to generate tags and improve search results.
@@ -28,8 +28,16 @@ This is a lib of swift, for quickly create swift develop
   s.source           = { :git => 'https://github.com/mokong/MWCommonSwiftLib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
-  s.source_files = 'MKCommonSwiftLib/Classes/*/*.{swift}'
-  s.ios.deployment_target = '10.0' 
+  s.source_files = 'MKCommonSwiftLib/Classes/*.{swift}'
+  s.ios.deployment_target = '10.0'
+  
+  s.subspec 'Foundation' do |b|
+      b.source_files = 'MKCommonSwiftLib/Classes/Foundation/*'
+  end
+  
+  s.subspec 'UIKit' do |c|
+      c.source_files = 'MKCommonSwiftLib/Classes/UIKit/*'
+  end
 
   # s.resource_bundles = {
   #   'MKCommonSwiftLib' => ['MKCommonSwiftLib/Assets/*.png']

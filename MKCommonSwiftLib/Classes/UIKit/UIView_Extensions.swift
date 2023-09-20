@@ -9,6 +9,16 @@ import Foundation
 import UIKit
 
 public extension UIView {
+    func removeAllTextLayers() {
+        if let tempSubLayers = layer.sublayers {
+            for subLayer in tempSubLayers {
+                if let _ = subLayer as? CATextLayer {
+                    subLayer.removeFromSuperlayer()
+                }
+            }
+        }
+    }
+    
     static func loadFromXib<T>(withOwner: Any? = nil, options: [UINib.OptionsKey: Any]? = nil) -> T where T: UIView {
         let bundle = Bundle(for: self)
         let nib = UINib(nibName: "\(self)", bundle: bundle)
@@ -86,7 +96,7 @@ public extension UIView {
     }
     
     // 设置虚线
-    func createDashedLine(from point1: CGPoint, to point2: CGPoint, color: UIColor = UIColor.custom.line, strokeLength: NSNumber = NSNumber(5), gapLength: NSNumber = NSNumber(3)) {
+    func createDashedLine(from point1: CGPoint, to point2: CGPoint, color: UIColor = UIColor.line, strokeLength: NSNumber = NSNumber(5), gapLength: NSNumber = NSNumber(3)) {
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.lineWidth = self.bounds.height

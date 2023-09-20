@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 
-extension UIImage {
+public extension UIImage {
     
     func thumbnailImage(from targetSize: CGFloat) -> UIImage? {
         let options = [

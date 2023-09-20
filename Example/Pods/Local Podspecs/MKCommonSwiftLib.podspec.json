@@ -1,6 +1,6 @@
 {
   "name": "MKCommonSwiftLib",
-  "version": "0.1.9",
+  "version": "0.2.1",
   "summary": "MKCommonSwiftLib is a lib of swift",
   "swift_versions": "5.0",
   "description": "This is a lib of swift, for quickly create swift develop",
@@ -14,9 +14,9 @@
   },
   "source": {
     "git": "https://github.com/mokong/MWCommonSwiftLib.git",
-    "tag": "0.1.9"
+    "tag": "0.2.1"
   },
-  "source_files": "MKCommonSwiftLib/Classes/*/*.{swift}",
+  "source_files": "MKCommonSwiftLib/Classes/*.{swift}",
   "platforms": {
     "ios": "10.0"
   },
@@ -34,5 +34,15 @@
 
     ]
   },
+  "subspecs": [
+    {
+      "name": "Foundation",
+      "source_files": "MKCommonSwiftLib/Classes/Foundation/*"
+    },
+    {
+      "name": "UIKit",
+      "source_files": "MKCommonSwiftLib/Classes/UIKit/*"
+    }
+  ],
   "swift_version": "5.0"
 }
